@@ -1,11 +1,10 @@
 # Dependências
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 
 # Diretório de build
-/dist
-/build
+dist/
 
 # Arquivos de ambiente
 .env
