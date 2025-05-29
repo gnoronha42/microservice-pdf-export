@@ -5,17 +5,31 @@ import chartRoutes from './routes/chart.routes';
 // Inicializar o aplicativo Express
 const app = express();
 
-// Configurar CORS para produção
+// Configurar CORS para produção - CORRIGIDO
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? [
-        process.env.FRONTEND_URL || 'https://lapi-dados-web.vercel.app',
-        'https://microservice-pdf-export.onrender.com'
-      ]
-    : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+    // Lista de origens permitidas
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000', 
+      'https://lapi-dados-web.vercel.app',
+      'https://microservice-pdf-export.onrender.com'
+    ];
+    
+    // Permitir requisições sem origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS bloqueado para origem:', origin);
+      callback(new Error('Não permitido pelo CORS'), false);
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));

@@ -2,9 +2,9 @@ services:
   - type: web
     name: microservice-pdf-export
     env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
     plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
