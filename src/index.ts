@@ -9,9 +9,8 @@ const app = express();
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? [
-        'https://microservice-pdf-export.onrender.com',
-        'https://lapi-dados-web.vercel.app', // Substitua pela URL do seu frontend
-        // Adicione outras URLs autorizadas
+        process.env.FRONTEND_URL || 'https://lapi-dados-web.vercel.app',
+        'https://microservice-pdf-export.onrender.com'
       ]
     : ['http://localhost:5173', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -73,8 +72,8 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   });
 });
 
-// Usar a porta do environment ou 3000 como fallback
-const PORT = process.env.PORT || 3000;
+// Converter PORT para número - CORREÇÃO AQUI
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Iniciar o servidor
 app.listen(PORT, '0.0.0.0', () => {
