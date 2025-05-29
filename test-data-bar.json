@@ -1,0 +1,44 @@
+{
+  "chartType": "bar",
+  "chartData": {
+    "data": [
+      {
+        "name": "Inovação",
+        "value": 8.5,
+        "color": "#3b82f6"
+      },
+      {
+        "name": "Colaboração",
+        "value": 7.2,
+        "color": "#10b981"
+      },
+      {
+        "name": "Excelência",
+        "value": 9.1,
+        "color": "#f59e0b"
+      },
+      {
+        "name": "Integridade",
+        "value": 8.8,
+        "color": "#ef4444"
+      },
+      {
+        "name": "Sustentabilidade",
+        "value": 7.5,
+        "color": "#8b5cf6"
+      }
+    ],
+    "title": "Desempenho por Valor - Gráfico de Barras",
+    "width": 600,
+    "height": 400,
+    "layout": "horizontal",
+    "xAxisLabel": "Pontuação",
+    "yAxisLabel": "Valores"
+  },
+  "pdfOptions": {
+    "title": "Relatório de Avaliação - Gráfico de Barras",
+    "fileName": "avaliacao-barras.pdf",
+    "pageSize": "A4",
+    "pageOrientation": "portrait"
+  }
+} 

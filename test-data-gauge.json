@@ -1,0 +1,20 @@
+{
+  "chartType": "radialBar",
+  "chartData": {
+    "score": 8.3,
+    "maxScore": 10,
+    "category": {
+      "label": "Excelente",
+      "color": "#10b981"
+    },
+    "title": "Resultado Geral da Avaliação",
+    "width": 400,
+    "height": 400
+  },
+  "pdfOptions": {
+    "title": "Relatório de Avaliação - Resultado Geral",
+    "fileName": "avaliacao-gauge.pdf",
+    "pageSize": "A4",
+    "pageOrientation": "portrait"
+  }
+} 

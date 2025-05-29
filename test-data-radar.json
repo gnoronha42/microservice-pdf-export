@@ -1,0 +1,28 @@
+{
+  "chartType": "radar",
+  "chartData": {
+    "labels": ["Inovação", "Colaboração", "Excelência", "Integridade", "Sustentabilidade"],
+    "datasets": [
+      {
+        "label": "Desempenho",
+        "data": [8.5, 7.2, 9.1, 8.8, 7.5],
+        "backgroundColor": "rgba(59, 130, 246, 0.4)",
+        "borderColor": "#2563eb",
+        "borderWidth": 2,
+        "pointBackgroundColor": "#2563eb",
+        "pointBorderColor": "#fff",
+        "pointRadius": 3,
+        "fill": true
+      }
+    ],
+    "title": "Desempenho por Valor",
+    "width": 600,
+    "height": 400
+  },
+  "pdfOptions": {
+    "title": "Relatório de Avaliação - Gráfico Radar",
+    "fileName": "avaliacao-radar.pdf",
+    "pageSize": "A4",
+    "pageOrientation": "portrait"
+  }
+} 
