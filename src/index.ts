@@ -55,16 +55,17 @@ app.get('/', (req, res) => {
 // Rotas do microserviço
 app.use('/api', chartRoutes);
 
-// Middleware para rotas não encontradas
-app.use('*', (req, res) => {
+// Middleware para rotas não encontradas - CORRIGIDO
+app.use((req, res) => {
   res.status(404).json({ 
     error: 'Rota não encontrada',
-    path: req.originalUrl 
+    path: req.originalUrl,
+    method: req.method
   });
 });
 
 // Middleware para tratamento de erros
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error('Erro:', err);
   res.status(500).json({ 
     error: 'Erro interno do servidor',
@@ -72,11 +73,11 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   });
 });
 
-// Converter PORT para número - CORREÇÃO AQUI
+// Converter PORT para número
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Iniciar o servidor
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`🚀 Microserviço de PDF rodando na porta ${PORT}`);
   console.log(`🌍 Ambiente: ${process.env.NODE_ENV || 'development'}`);
   console.log(`📊 Endpoints disponíveis:`);
